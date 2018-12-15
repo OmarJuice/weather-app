@@ -73,7 +73,7 @@ class CurrentDisplay extends Component {
                     </p>
                 </div>
                 <div className="column is-full has-text-centered">
-                    <p className="is-size-6 TWBold">Powered by <a href="https://www.mapbox.com/">MapBox</a> and  <a href="https://darksky.net/dev">DarkSky</a></p>
+                    <p className="is-size-5 TWBold">Powered by <a href="https://www.mapbox.com/">MapBox</a> and  <a href="https://darksky.net/dev">DarkSky</a></p>
                 </div>
 
             </div >
