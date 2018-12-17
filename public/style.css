@@ -80,7 +80,8 @@ body, html, #root, #container {
     border: 3px outset gray;
     /* box-shadow: 1px 3px 10px black; */
     margin-top: 0;
-    top: -2.8vh
+    top: -2.8vh;
+    -webkit-overflow-scrolling: touch;
 }
 .tabs{
     margin-bottom: 0px;
