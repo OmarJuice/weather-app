@@ -1,4 +1,5 @@
 const weatherBackgrounds = {
+    'DEFAULT': 'background-default',
     'CLEAR_DAY': 'background-clear-day',
     'CLEAR_NIGHT': 'background-clear-night',
     'PARTLY_CLOUDY_DAY': 'background-partly-cloudy-day',

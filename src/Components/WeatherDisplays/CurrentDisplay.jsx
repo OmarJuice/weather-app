@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Skycons from 'react-skycons'
 import moment from 'moment-timezone'
+import { connect } from 'react-redux';
 const getCompassDirection = (deg) => {
 
     let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
@@ -9,10 +10,6 @@ const getCompassDirection = (deg) => {
 
 class CurrentDisplay extends Component {
 
-    componentDidMount() {
-        // console.log(this.props.weather)
-        // console.log(this.props.location);
-    }
 
     render() {
         let time = moment.tz(this.props.weather.time * 1000, this.props.timezone).format('h:mm a')
@@ -81,4 +78,12 @@ class CurrentDisplay extends Component {
     }
 }
 
-export default CurrentDisplay;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        weather: state.weather.currently,
+        location: state.weather.location,
+        timezone: state.weather.timezone
+    }
+}
+
+export default connect(mapStateToProps, null)(CurrentDisplay);

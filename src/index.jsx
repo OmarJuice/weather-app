@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import CenteredContainer from './Components/CenteredContainer';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers'
+import App from './Components/App';
 
 
-class App extends Component {
+const store = createStore(reducers, applyMiddleware(thunk))
 
-    render() {
-        return (
-            <CenteredContainer>
-
-            </CenteredContainer>
-        )
-    }
-}
-
-
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(// add store to provider 
+    <Provider store={store} >
+        <App />
+    </Provider>,
+    document.querySelector('#root'))

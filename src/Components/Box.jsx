@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
-import dotenv from 'dotenv';
+import { connect } from 'react-redux';
 import CurrentDisplay from './WeatherDisplays/CurrentDisplay';
 import HourlyDisplay from './WeatherDisplays/HourlyDisplay';
 import DailyDisplay from './WeatherDisplays/DailyDisplay';
 import ErrorDisplay from './WeatherDisplays/ErrorDisplay';
 import LoadingDisplay from './WeatherDisplays/LoadingDisplay';
-dotenv.config()
 class Box extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            currently: this.props.weather.currently,
-            hourly: this.props.weather.hourly,
-            daily: this.props.weather.daily
-        }
+        // this.state = {
+        //     currently: this.props.weather.currently,
+        //     hourly: this.props.weather.hourly,
+        //     daily: this.props.weather.daily
+        // }
         this.getDisplay = this.getDisplay.bind(this)
     }
 
     getDisplay() {
 
         if (this.props.loading) {
-            return <LoadingDisplay animation={this.props.loadingAnimation} />
+            return <LoadingDisplay />
         }
         if (this.props.error) {
             return <ErrorDisplay />
         }
 
-        if (this.props.display === 'now') {
-            return <CurrentDisplay weather={this.props.weather.currently} location={this.props.location} timezone={this.props.timezone} />
-        } else if (this.props.display === 'day') {
-            return <HourlyDisplay weather={this.props.weather.hourly} location={this.props.location} timezone={this.props.timezone} />
-        } else if (this.props.display === 'week') {
-            return <DailyDisplay weather={this.props.weather.daily} location={this.props.location} timezone={this.props.timezone} />
+        if (this.props.display === 'CURRENTLY') {
+            return <CurrentDisplay />
+        } else if (this.props.display === 'HOURLY') {
+            return <HourlyDisplay />
+        } else if (this.props.display === 'DAILY') {
+            return <DailyDisplay />
         }
 
     }
@@ -48,5 +47,13 @@ class Box extends Component {
         );
     }
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        loading: state.loading.load,
+        display: state.displayed,
+        error: state.error.exists
+    }
+}
 
-export default Box;
+
+export default connect(mapStateToProps, null)(Box);

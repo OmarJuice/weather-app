@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { displayChange } from '../actions';
 
 class Tabs extends Component {
+
+    componentDidMount() {
+    }
+
+    changeDisplay(e, display) {
+        e.preventDefault();
+        this.props.displayChange(display)
+    }
 
     render() {
         return (
             <div className="tabs is-toggle is-rounded is-fullwidth TWBold">
                 <ul>
-                    <li className={this.props.display === 'now' ? "is-active" : "inactive"} >
-                        <a className="tab" href="/" onClick={this.props.getDisplay('now')}>
+                    <li className={this.props.displayed === 'CURRENTLY' ? "is-active" : "inactive"} >
+                        <a className="tab" href="/" onClick={(e) => this.changeDisplay.apply(this, [e, 'CURRENTLY'])}>
 
                             <span className="has-text-light">Now</span>
                         </a>
                     </li>
-                    <li className={this.props.display === 'day' ? "is-active" : "inactive"}>
-                        <a className="tab" href="/" onClick={this.props.getDisplay('day')}>
+                    <li className={this.props.displayed === 'HOURLY' ? "is-active" : "inactive"}>
+                        <a className="tab" href="/" onClick={(e) => this.changeDisplay.apply(this, [e, 'HOURLY'])}>
 
                             <span className="has-text-light">24hr</span>
                         </a>
                     </li>
-                    <li className={this.props.display === 'week' ? "is-active" : "inactive"}>
-                        <a className="tab" href="/" onClick={this.props.getDisplay('week')}>
+                    <li className={this.props.displayed === 'DAILY' ? "is-active" : "inactive"}>
+                        <a className="tab" href="/" onClick={(e) => this.changeDisplay.apply(this, [e, 'DAILY'])}>
 
                             <span className="has-text-light">This Week</span>
                         </a>
@@ -36,5 +46,9 @@ class Tabs extends Component {
         );
     }
 }
-
-export default Tabs;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        displayed: state.displayed
+    }
+}
+export default connect(mapStateToProps, { displayChange })(Tabs)

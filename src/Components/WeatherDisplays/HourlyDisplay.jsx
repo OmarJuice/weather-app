@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Skycons from 'react-skycons'
 import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 class HourlyDisplay extends Component {
-    componentDidMount() {
-        // console.log(this.props.weather)
-        // console.log(this.props.location);
-    }
+
     render() {
 
         let weatherRender = this.props.weather.data.map((hour, i) => {
@@ -15,7 +13,7 @@ class HourlyDisplay extends Component {
             let icon = hour.icon.toUpperCase().replace(/-/g, '_')
             let time = moment(hour.time * 1000).tz(this.props.timezone).format('ha');
             return (
-                <div className="column is-one-quarter small-skycon hour has-text-light">
+                <div key={time} className="column is-one-quarter small-skycon hour has-text-light">
                     <div className="is-size-4 TWBold">{time}</div>
 
                     <Skycons
@@ -37,5 +35,12 @@ class HourlyDisplay extends Component {
         );
     }
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        weather: state.weather.hourly,
+        location: state.weather.location,
+        timezone: state.weather.timezone
+    }
+}
 
-export default HourlyDisplay;
+export default connect(mapStateToProps, null)(HourlyDisplay);

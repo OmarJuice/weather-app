@@ -4,7 +4,7 @@ body, html, #root, #container {
     display: flex;
     justify-content: center;
 }
-body{
+.background-default{
     background-image: url(https://images.unsplash.com/photo-1525490829609-d166ddb58678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80);
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,7 +78,7 @@ body{
     border-radius: 2px;
     border-radius: 10px;
     border: 3px outset gray;
-    box-shadow: 1px 3px 10px black;
+    /* box-shadow: 1px 3px 10px black; */
     margin-top: 0;
     top: -2.8vh
 }
@@ -152,8 +152,8 @@ a.tab:hover{
     flex-direction: column;
 }
 .large-skycon canvas{
-    height: 70% !important;
-    width: 88% !important;
+    width: 100% !important;
+    height: auto !important;
  }
  .large-skycon{
         display: flex;
@@ -165,8 +165,8 @@ a.tab:hover{
     justify-content: center
 }
 .centered-skycon canvas{
-    height: 32px !important;
-    width: 64px !important;
+    width: 14% !important;
+    height: auto !important;
 
 }
 .day-display{
@@ -200,14 +200,14 @@ a.tab:hover{
     z-index: 3;
 }   
 .moving-skycon.left canvas{
-    height: 32px !important;
-    width: 64px !important;
+    width: 14% !important;
+    height: auto !important;
     position: relative;
     animation: translate-right 4s infinite ease-in-out  
 }
 .moving-skycon.right canvas{
-    height: 32px !important;
-    width: 64px !important;
+    width: 14% !important;
+    height: auto !important;
     position: relative;
     right: 0%;
     animation: translate-left 4s infinite ease-in-out  
@@ -215,7 +215,7 @@ a.tab:hover{
 
 @keyframes translate-right{
     0%{
-        left: 0%
+        left: 5%
     }
    
     50%{
@@ -223,12 +223,12 @@ a.tab:hover{
     }
   
     100%{
-        left: 0%
+        left: 5%
     }
 }
 @-moz-keyframes translate-right{
     0%{
-        left: 0%
+        left: 5%
     }
    
     50%{
@@ -236,12 +236,12 @@ a.tab:hover{
     }
   
     100%{
-        left: 0%
+        left: 5%
     }
 }
 @-webkit-keyframes translate-right{
     0%{
-        left: 0%
+        left: 5%
     }
    
     50%{
@@ -249,12 +249,12 @@ a.tab:hover{
     }
   
     100%{
-        left: 0%
+        left: 5%
     }
 }
 @-o-keyframes translate-right{
     0%{
-        left: 0%
+        left: 5%
     }
    
     50%{
@@ -262,7 +262,7 @@ a.tab:hover{
     }
   
     100%{
-        left: 0%
+        left: 5%
     }
 }
 
@@ -272,7 +272,7 @@ a.tab:hover{
     }
    
     50%{
-        left: 0%
+        left: 5%
     }
   
     100%{
@@ -285,7 +285,7 @@ a.tab:hover{
     }
    
     50%{
-        left: 0%
+        left: 5%
     }
   
     100%{
@@ -298,7 +298,7 @@ a.tab:hover{
     }
    
     50%{
-        left: 0%
+        left: 5%
     }
   
     100%{
@@ -311,7 +311,7 @@ a.tab:hover{
     }
    
     50%{
-        left: 0%
+        left: 5%
     }
   
     100%{
@@ -321,8 +321,8 @@ a.tab:hover{
 
 @media only screen and (max-width: 768px){
     .large-skycon canvas{
-        height: 80% !important;
         width: 100% !important;
+        height: auto !important;
     
         }
         .large-skycon{
@@ -334,12 +334,12 @@ a.tab:hover{
         margin: 0px
     }
     .moving-skycon.left canvas, .moving-skycon.right canvas{
-        height: 20px !important;
-        width: 40px !important;
+        width: 14% !important;
+        height: auto !important;
     }
     .centered-skycon canvas{
-        height: 20px !important;
-        width: 40px !important;
+        width: 14% !important;
+        height: auto !important;
   
     }
     .box{

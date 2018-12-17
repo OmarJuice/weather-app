@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Skycons from 'react-skycons'
 import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 
 class DailyDisplay extends Component {
-    componentDidMount() {
-        // console.log(this.props.weather)
-        // console.log(this.props.location);
-    }
+
     render() {
 
         let weatherRender = this.props.weather.data.map((day) => {
@@ -23,9 +21,9 @@ class DailyDisplay extends Component {
                         icon={icon}
                         autoplay={true}
                     />
-                    <p className="temp"><span className="icon"><i class="fas fa-thermometer-full"></i></span>
+                    <p className="temp"><span className="icon"><i className="fas fa-thermometer-full"></i></span>
                         {day.temperatureHigh | 0}°</p>
-                    <p className="temp"><span className="icon"><i class="fas fa-thermometer-empty"></i></span>
+                    <p className="temp"><span className="icon"><i className="fas fa-thermometer-empty"></i></span>
                         {day.temperatureLow | 0}°</p>
                 </div>
 
@@ -41,4 +39,12 @@ class DailyDisplay extends Component {
     }
 }
 
-export default DailyDisplay;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        weather: state.weather.daily,
+        location: state.weather.location,
+        timezone: state.weather.timezone
+    }
+}
+
+export default connect(mapStateToProps, null)(DailyDisplay);
