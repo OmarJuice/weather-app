@@ -188,7 +188,7 @@ a.tab:hover{
     right: 0;
     bottom: 0;
     box-shadow: inset 0 0 0 0px rgba(255,255,255,0.05);
-    filter: blur(4000px);
+    opacity: .5;
     z-index: initial;
    }
 

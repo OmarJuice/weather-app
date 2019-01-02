@@ -16,13 +16,10 @@ class App extends Component {
         console.log('update');
     }
 
-    handleChange = (e) => {
-        e.preventDefault()
-        this.input = e.target.value
-    }
+
     handleSubmit = (e) => {
         e.preventDefault()
-        let loc = this.input
+        let loc = document.getElementById('input').value
         this.input = ''
         document.getElementById('input').value = ''
         if (loc.length < 1) {
@@ -44,7 +41,6 @@ class App extends Component {
     }
 
     render() {
-        //Change background rendering to be prop based
         let containerClass;
 
         if (this.props.icon) {
@@ -59,7 +55,7 @@ class App extends Component {
                     <Tabs />
                     <Box>
                         <form id="search-form" action="" onSubmit={this.handleSubmit} >
-                            <input id="input" className="input is-primary TW" type="text" onChange={this.handleChange} autoComplete="off" autoFocus />
+                            <input id="input" className="input is-primary TW" type="text" autoComplete="off" autoFocus />
                             <div className="has-text-centered">
 
                                 <input type="submit" className="button is-success TWBold" value="Search" />
